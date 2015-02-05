@@ -8,7 +8,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 
 import com.epam.dzmitry_slutski.xcoresample.R;
-import com.epam.dzmitry_slutski.xcoresample.models.SampleEntity;
+import com.epam.dzmitry_slutski.xcoresample.models.Result;
 import com.epam.dzmitry_slutski.xcoresample.processors.SampleEntityProcessor;
 
 import by.istin.android.xcore.fragment.XListFragment;
@@ -36,7 +36,8 @@ public class MainActivity extends ActionBarActivity {
     public static class SampleListFragment extends XListFragment {
 
         //        private static final String PAGE1 = "https://dl.dropboxusercontent.com/u/30468926/friendserror.get";
-        private static final String PAGE1 = "https://dl.dropboxusercontent.com/u/30468926/friends.get";
+//        private static final String PAGE1 = "https://dl.dropboxusercontent.com/u/30468926/friends.get";
+        private static final String PAGE1 = "https://dl.dropboxusercontent.com/u/30468926/friendsmod3.get";
 
         @Override
         public void onListItemClick(Cursor cursor, View view, int i, long l) {
@@ -50,7 +51,7 @@ public class MainActivity extends ActionBarActivity {
 
         @Override
         public Uri getUri() {
-            return ModelContract.getUri(SampleEntity.class);
+            return ModelContract.getUri(Result.class);
         }
 
         @Override
@@ -60,7 +61,7 @@ public class MainActivity extends ActionBarActivity {
 
         @Override
         protected void onPageLoad(int newPage, int totalItemCount) {
-            loadData(getActivity(), PAGE1, PAGE1);
+            loadData(getActivity(), PAGE1, null);
         }
 
         @Override
@@ -75,8 +76,8 @@ public class MainActivity extends ActionBarActivity {
 
         @Override
         public String[] getAdapterColumns() {
-            return new String[]{SampleEntity.ID, SampleEntity.FULL_NAME,
-                    SampleEntity.BIRTH_DATE, SampleEntity.PHOTO, SampleEntity.CITY};
+            return new String[]{Result.Item.ID, Result.Item.FULL_NAME,
+                    Result.Item.BIRTH_DATE, Result.Item.PHOTO, Result.Item.CITY};
         }
 
         @Override
